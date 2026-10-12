@@ -1,0 +1,1 @@
+{"redirects":[{"source":"/album","destination":"https://panel-invitados.vercel.app/subir/boda-rocio-y-quentin","permanent":false}],"rewrites":[{"source":"/(.*)","destination":"/index.html"}]}
