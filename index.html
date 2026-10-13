@@ -131,7 +131,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 #hero{min-height:calc(100svh + var(--seam));padding:70px 22px calc(70px + var(--seam));display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
 .bokeh{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .bokeh span{position:absolute;bottom:-140px;border-radius:50%;opacity:0;
-  background:radial-gradient(circle,rgba(255,222,160,.75) 0%,rgba(255,186,96,.28) 34%,transparent 70%);
+  background:radial-gradient(circle,rgba(255,222,160,.55) 0%,rgba(255,186,96,.22) 38%,transparent 72%);filter:blur(6px);
   animation:rise var(--t,14s) linear infinite;animation-delay:var(--dl,0s)}
 .bokeh span::after{content:'';position:absolute;inset:0;border-radius:50%;background:inherit;animation:bokehPulse var(--p,3s) ease-in-out infinite alternate}
 @keyframes rise{
@@ -609,13 +609,6 @@ body.locked{overflow:hidden}
     <p class="eyebrow" data-fx="spread">El programa</p>
     <h2 class="h-script" data-fx="blur">A la luz de las velas</h2>
     <p class="lead" data-fx="rise">Una noche que jamás olvidaremos</p>
-    <div class="candle-scene" id="candles" data-fx="unveil" style="--d:.2s" aria-hidden="true">
-      <div class="cdl" style="--l:6%;--w:24px;--h:92px;--f:1.5s"><span class="halo"></span><span class="wick"></span><span class="fl"></span><span class="drip" style="left:4px;height:18px"></span></div>
-      <div class="cdl" style="--l:22%;--w:30px;--h:150px;--f:1.9s"><span class="halo"></span><span class="wick"></span><span class="fl"></span><span class="drip" style="left:18px;height:26px"></span><span class="drip" style="left:5px;height:12px"></span></div>
-      <div class="cdl" style="--l:43%;--w:36px;--h:190px;--f:1.7s"><span class="halo"></span><span class="wick"></span><span class="fl"></span><span class="drip" style="left:8px;height:30px"></span><span class="drip" style="left:24px;height:16px"></span></div>
-      <div class="cdl" style="--l:66%;--w:28px;--h:128px;--f:1.35s"><span class="halo"></span><span class="wick"></span><span class="fl"></span><span class="drip" style="left:14px;height:22px"></span></div>
-      <div class="cdl" style="--l:84%;--w:22px;--h:76px;--f:1.65s"><span class="halo"></span><span class="wick"></span><span class="fl"></span></div>
-    </div>
     <div class="it" id="itin">
       <div class="it-track" aria-hidden="true"><span class="it-base"></span><span class="it-glow"></span><span class="it-mid"></span><span class="it-core"></span><span class="it-pearl"></span></div>
       <div class="it-ev" data-fx="rise"><span class="it-ic"><img src="ic-church.webp" alt="" width="120" height="120" /></span>
@@ -851,7 +844,7 @@ function initFx(){
 function bokeh(id,n){
   var w=document.getElementById(id);if(!w)return;
   /* luces de vela que suben sin parar: cada una entra con desfase y vuelve a nacer abajo */
-  for(var i=0;i<n;i++){var s=document.createElement('span'),z=26+Math.random()*80,t=11+Math.random()*10;
+  for(var i=0;i<n;i++){var s=document.createElement('span'),z=26+Math.random()*80,t=20+Math.random()*14;
     s.style.cssText='width:'+z+'px;height:'+z+'px;left:'+(Math.random()*96-8)+'%;--t:'+t+'s;--p:'+(2+Math.random()*2.6)+'s;--dl:-'+(Math.random()*t).toFixed(2)+'s;--x:'+((Math.random()-.5)*90).toFixed(0)+'px';
     w.appendChild(s);}
 }
