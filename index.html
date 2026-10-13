@@ -89,6 +89,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 #vestimenta .card{margin-top:40px;margin-bottom:40px}
 #velas::before,#rsvp::before{background-position:center bottom}
 
+
 /* ── Aura viva: degradado que respira y se mueve en las secciones vino y verde ── */
 .sec > .aura{position:absolute;inset:-25%;z-index:0;pointer-events:none;mix-blend-mode:screen;
   transform:translate3d(0,var(--par,0px),0);will-change:transform}
@@ -462,6 +463,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(38,62,15,.12);border-color:var(--green);color:var(--green);transform:translateY(-2px)}
 .rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(121,26,61,.08);border-color:var(--wine);color:var(--wine);transform:translateY(-2px)}
 .rsvp-contador-wrap{display:none;margin-bottom:16px}
+.rsvp-asis-lbl{font-weight:700;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--wine);margin-bottom:6px}
 .rsvp-contador-nota{font-style:italic;font-size:17px;margin-bottom:10px}
 .rsvp-contador{display:flex;align-items:center;justify-content:center;gap:18px;padding:8px;border-radius:14px;background:rgba(255,255,255,.85);border:1.5px solid rgba(153,101,21,.3);margin-bottom:6px}
 .rsvp-contador-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--wine);background:#fff;color:var(--wine);font-size:26px;font-weight:700;line-height:1;display:grid;place-items:center}
@@ -493,6 +495,13 @@ footer{position:relative;padding:calc(70px + var(--seam)) 24px 120px;text-align:
 #env{position:fixed;inset:0;z-index:1000;background:#2b0f1d;cursor:pointer;overflow:hidden}
 #env img,#env video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.03)}
 #env video{opacity:0}
+#env .lang{position:absolute;left:0;right:0;bottom:48px;z-index:3;text-align:center;transition:opacity .4s}
+#env .lang-q{font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4a2a12;text-shadow:0 1px 6px rgba(255,255,255,.9);margin-bottom:12px}
+#env .lang-btns{display:flex;justify-content:center;gap:12px}
+#env .lang-btns button{min-width:128px;min-height:50px;padding:12px 22px;border-radius:40px;font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;
+  color:#FFF6EA;background:linear-gradient(135deg,#9b2550,var(--wine) 55%,var(--wine-deep));border:1px solid rgba(233,207,151,.7);
+  box-shadow:0 10px 24px -8px rgba(74,15,37,.7);animation:hintP 2.6s ease-in-out infinite}
+#env .lang-btns button:last-child{animation-delay:1.3s}
 #env .hint{position:absolute;left:0;right:0;bottom:56px;z-index:3;font-weight:700;font-size:14px;letter-spacing:.42em;text-transform:uppercase;color:#4a2a12;text-shadow:0 1px 6px rgba(255,255,255,.8);animation:hintP 2.2s ease-in-out infinite;text-align:center}
 @keyframes hintP{0%,100%{opacity:.5}50%{opacity:1}}
 body.locked{overflow:hidden}
@@ -547,9 +556,12 @@ body.locked{overflow:hidden}
 
 <!-- SOBRE -->
 <div id="env" role="button" aria-label="Toca para abrir tu invitación">
-  <img id="envImg" src="sobre.jpg" alt="Sobre de invitación" />
-  <video id="envVid" src="sobre-apertura.mp4" playsinline webkit-playsinline muted preload="auto"></video>
-  <p class="hint">Toca para abrir</p>
+  <img id="envImg" src="sobre.jpg?v=2" alt="Sobre de invitación" />
+  <video id="envVid" src="sobre-apertura.mp4?v=2" playsinline webkit-playsinline muted preload="auto"></video>
+  <div class="lang" id="lang">
+    <p class="lang-q">Elige tu idioma · Choose your language</p>
+    <div class="lang-btns"><button type="button" data-lang="es">Español</button><button type="button" data-lang="en">English</button></div>
+  </div>
 </div>
 
 <!-- MÚSICA -->
@@ -641,7 +653,7 @@ body.locked{overflow:hidden}
   </section>
 
   <!-- GUARDA LA FECHA -->
-  <section class="sec forest" id="fecha">
+  <section class="sec dark" id="fecha">
     <p class="eyebrow" data-fx="spread">No lo olvides</p>
     <h2 class="h-script" data-fx="blur">Guarda la fecha</h2>
     <div class="polaroid" data-fx="tilt"><img src="foto-novios.jpg" alt="Rocio y Quentin" loading="lazy" width="1145" height="1374" /><p>Rocio &amp; Quentin</p></div>
@@ -726,10 +738,9 @@ body.locked{overflow:hidden}
       <p class="eyebrow">Para tomar en cuenta</p>
       <h2 class="h-script">Notas</h2>
       <div class="notes">
-        <div class="note"><i>1</i><p>Con todo el cariño, hemos decidido que nuestra celebración sea <strong>exclusiva para adultos</strong>. Gracias por tu comprensión.</p></div>
-        <div class="note"><i>2</i><p>Agradecemos tu compromiso y puntualidad por respeto al protocolo.</p></div>
-        <div class="note"><i>3</i><p>Nos dará mucha emoción ver que nos acompañen desde la ceremonia civil.</p></div>
-        <div class="note"><i>4</i><p>Los pases asignados son intransferibles; agradecemos tu sinceridad para registrar la asistencia o ausencia de los miembros de tu invitación.</p></div>
+        <div class="note"><i>1</i><p>Agradecemos tu compromiso y puntualidad por respeto al protocolo.</p></div>
+        <div class="note"><i>2</i><p>Nos dará mucha emoción ver que nos acompañen desde la ceremonia.</p></div>
+        <div class="note"><i>3</i><p>Los pases asignados son intransferibles; agradecemos tu sinceridad para registrar la asistencia o ausencia de los miembros de tu invitación.</p></div>
       </div>
     </article>
   </section>
@@ -806,6 +817,7 @@ body.locked{overflow:hidden}
       <div id="rsvp-bandeja">
         <div class="rsvp-toggle"><button class="rsvp-toggle-btn" id="btnYes" type="button">Asistiré</button><button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button></div>
         <div class="rsvp-contador-wrap" id="rsvp-contador-wrap">
+          <p class="rsvp-asis-lbl">Número de asistentes</p>
           <p class="rsvp-contador-nota" id="rsvp-contador-nota"></p>
           <div class="rsvp-contador" id="rsvp-contador">
             <button class="rsvp-contador-btn" id="rsvp-menos" type="button" aria-label="Quitar un pase">&minus;</button>
@@ -844,6 +856,79 @@ var bgs={bienvenida:'g-peonias.jpg',lugares:'g-marmol.jpg',familia:'g-peonias.jp
 var st=document.createElement('style');
 st.textContent=Object.keys(bgs).map(function(k){return '#'+k+'::before{background-image:url('+BG+bgs[k]+')}';}).join('');
 document.head.appendChild(st);
+
+/* ── Idioma: inglés por diccionario de textos (incluye los textos dinámicos del RSVP) ── */
+var EN={
+"Enciende la música":"Turn on the music","Nuestra boda":"Our wedding","VIERNES":"FRIDAY","NOV · 2026":"NOV · 2026",
+"“Entonces te das cuenta, que no es quien te mueve el piso,":"“Then you realize it is not the one who sweeps you off your feet,",
+"sino quien te centra.":"but the one who keeps you grounded.","No es quien te roba el corazón,":"It is not the one who steals your heart,",
+"sino quien te hace sentir":"but the one who makes you feel","que lo tienes de vuelta.”":"you have it back.”",
+"Faltan":"Countdown","Nuestro gran día":"Our big day","Días":"Days","Horas":"Hours","Min":"Min","Seg":"Sec",
+"Nos encontramos aquí, en donde celebraremos el amor que nos unió y el comienzo de nuestro para siempre.":"We will meet here, where we will celebrate the love that brought us together and the beginning of our forever.",
+"Ceremonia civil":"Civil ceremony","Cómo llegar":"Get directions","Recepción":"Reception","El programa":"The schedule",
+"Una noche que jamás olvidaremos":"A night we will never forget","Ceremonia":"Ceremony","Cóctel y fotografías":"Cocktails & photos",
+"Cena, música y celebración":"Dinner, music & celebration","No lo olvides":"Don't forget","Guarda la fecha":"Save the date",
+"Noviembre 2026":"November 2026","Agregar a Google Calendar":"Add to Google Calendar","Código de vestimenta":"Dress code",
+"Vestimenta":"Dress code","FORMAL":"FORMAL","ELEGANTE":"ELEGANT","Hombres":"Men","Traje formal":"Formal suit","Mujeres":"Women",
+"Vestido largo":"Long gown","Con cariño, les pedimos":"Kindly, we ask you","no usar blanco":"not to wear white",
+": está reservado para la novia.":": it is reserved for the bride.","Toma precauciones":"Be prepared","El clima esa noche":"The weather that night",
+"Lluvia":"Rain","Día":"Day","Noche":"Night","70°F de día · 48°F de noche":"70°F by day · 48°F at night",
+"Noviembre en San Antonio es templado por la tarde y":"November in San Antonio is mild in the afternoon and",
+"fresco al caer la noche":"cool after sunset",". La celebración será en jardín: te sugerimos traer un chal o saco ligero.":". The celebration will be in a garden: we suggest bringing a light shawl or jacket.",
+"Consulta el pronóstico":"Check the forecast","Con la bendición de nuestros padres":"With the blessing of our parents",
+"Padres de la novia":"Parents of the bride","Padres del novio":"Parents of the groom","Padrinos":"Godparents","Por confirmar":"To be confirmed",
+"Nuestra historia":"Our story","Momentos juntos":"Moments together","Juntos para siempre":"Together forever","Tu sonrisa, mi hogar":"Your smile, my home",
+"El amor de mi vida":"The love of my life","Mi compañero":"My partner","Para tomar en cuenta":"Please note","Notas":"Notes",
+"Agradecemos tu compromiso y puntualidad por respeto al protocolo.":"We appreciate your commitment and punctuality out of respect for the schedule.",
+"Nos dará mucha emoción ver que nos acompañen desde la ceremonia.":"It would mean so much to us to have you with us from the ceremony.",
+"Los pases asignados son intransferibles; agradecemos tu sinceridad para registrar la asistencia o ausencia de los miembros de tu invitación.":"Assigned passes are non-transferable; we appreciate your honesty in confirming the attendance or absence of each person on your invitation.",
+"Mesa de regalos":"Gift registry","Tu presencia es nuestro regalo":"Your presence is our gift",
+"Si deseas tener un detalle con nosotros, te compartimos estas opciones":"If you wish to give us a gift, here are some options",
+"Transferencia":"Bank transfer","Copiar":"Copy","Copiado":"Copied","Cuenta":"Account","Celebra con nosotros":"Celebrate with us","Lluvia de sobres":"Envelope shower",
+"El día de la boda habrá una urna donde podrás depositar tu sobre con mucho cariño.":"On the wedding day there will be a box where you can leave your envelope with love.",
+"Toca el sobre para abrirlo":"Tap the envelope to open it","Comparte el momento":"Share the moment","Álbum de fotos":"Photo album",
+"Ayúdanos a guardar cada momento: sube aquí las fotos que tomes durante el evento.":"Help us keep every moment: upload here the photos you take during the event.",
+"Subir mis fotos":"Upload my photos","El álbum de fotos se habilita el día del evento. Regresa aquí y sube todas tus fotos de la noche.":"The photo album opens on the day of the event. Come back here and upload all your photos from the night.",
+"Confirmación":"RSVP","¿Nos acompañas?":"Will you join us?",
+"Eres muy importante para nosotros, hemos reservado lugares en tu honor. Por favor confírmanos tu asistencia antes del":"You are very important to us and we have reserved seats in your honor. Please confirm your attendance before",
+"8 de noviembre de 2026":"November 8, 2026","Pases":"Passes","Asistiré":"I will attend","No podré asistir":"I can't attend",
+"Número de asistentes":"Number of guests","Confirmar asistencia":"Confirm attendance","Confirmar":"Confirm","Modificar mi respuesta":"Change my answer",
+"Fecha límite · 8 de noviembre de 2026":"Deadline · November 8, 2026","Actualizar respuesta":"Update answer","Enviando…":"Sending…",
+"¡Gracias por confirmar!":"Thank you for confirming!","Gracias por avisarnos":"Thank you for letting us know",
+"Lamentamos que no puedas acompañarnos. Te vamos a extrañar.":"We are sorry you can't join us. We will miss you.",
+"Estás usando todos tus pases":"You are using all your passes","Plazo cerrado":"RSVP closed","Confirmaciones cerradas":"Responses closed",
+"La fecha para confirmar asistencia ya pasó.":"The RSVP deadline has passed.","Tu nombre completo":"Your full name",
+"Por favor elige si podrás acompañarnos.":"Please choose whether you can join us.","Por favor escribe al menos un nombre.":"Please write at least one name.",
+"Hubo un problema al enviar. Inténtalo de nuevo.":"There was a problem sending. Please try again.","Sin conexión. Verifica tu internet e inténtalo de nuevo.":"No connection. Check your internet and try again.",
+"No encontramos tu invitación. Pide a los novios que te envíen tu enlace de nuevo.":"We couldn't find your invitation. Ask the couple to send you your link again.",
+"Diseño · @elysium.invitaciones":"Design · @elysium.invitaciones","20 · 11 · 2026 · SAN ANTONIO, TX":"11 · 20 · 2026 · SAN ANTONIO, TX"
+};
+var EN_RX=[
+ [/^Tienes 1 pase reservado para ti\. Confirma el número de asistentes:$/,'You have 1 pass reserved for you. Confirm the number of guests:'],
+ [/^Tienes (\d+) pases reservados\. Confirma el número de asistentes:$/,'You have $1 passes reserved. Confirm the number of guests:'],
+ [/^(\d+) de (\d+) pases$/,'$1 of $2 passes'],
+ [/^Nombre completo del invitado (\d+)$/,'Full name of guest $1'],
+ [/^Te esperamos, (.+)\.$/,'We look forward to seeing you, $1.'],
+ [/^Confirmamos (\d+) lugares: (.+)\.$/,'We confirmed $1 seats: $2.']
+];
+var LANG='es';
+function tr(t){var k=t.trim();if(!k)return null;if(EN[k]!==undefined)return t.replace(k,EN[k]);for(var i=0;i<EN_RX.length;i++)if(EN_RX[i][0].test(k))return t.replace(k,k.replace(EN_RX[i][0],EN_RX[i][1]));return null}
+function trTree(root){
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
+  list.forEach(function(n){var p=n.parentElement;if(!p||p.tagName==='SCRIPT'||p.tagName==='STYLE')return;var r=tr(n.nodeValue);if(r!==null&&r!==n.nodeValue)n.nodeValue=r;});
+  if(root.tagName==='INPUT'&&root.placeholder){var rp=tr(root.placeholder);if(rp)root.placeholder=rp;}
+  if(root.querySelectorAll)root.querySelectorAll('input[placeholder]').forEach(function(i){var r=tr(i.placeholder);if(r)i.placeholder=r;});
+}
+function setLang(l){
+  LANG=l;document.documentElement.lang=l;if(l!=='en')return;
+  document.querySelectorAll('[data-cap]').forEach(function(f){if(EN[f.dataset.cap])f.dataset.cap=EN[f.dataset.cap]});
+  trTree(document.body);
+  var busy=false;
+  new MutationObserver(function(ms){if(busy)return;busy=true;ms.forEach(function(m){
+    if(m.type==='characterData'){var r=tr(m.target.nodeValue);if(r!==null&&r!==m.target.nodeValue)m.target.nodeValue=r;}
+    m.addedNodes&&m.addedNodes.forEach(function(nd){if(nd.nodeType===3){var r=tr(nd.nodeValue);if(r!==null&&r!==nd.nodeValue)nd.nodeValue=r;}else if(nd.nodeType===1)trTree(nd);});
+  });busy=false;}).observe(document.body,{subtree:true,childList:true,characterData:true});
+}
 
 /* ── Aura viva + parallax suave al hacer scroll ── */
 document.querySelectorAll('.dark,.forest').forEach(function(sec){var a=document.createElement('span');a.className='aura';a.setAttribute('aria-hidden','true');a.innerHTML='<i></i><i></i><i></i>';sec.insertBefore(a,sec.firstChild);});
@@ -929,12 +1014,12 @@ mbtn.addEventListener('click',function(e){mbtn.classList.remove('hint');e.stopPr
     setTimeout(function(){env.remove();leaves();},1450);}
   function open(){if(opened)return;opened=true;
     var p=vid.play();vid.style.transition='opacity .5s';vid.style.opacity='1';img.style.transition='opacity .5s';img.style.opacity='0';
-    env.querySelector('.hint').style.display='none';
+    document.getElementById('lang').style.opacity='0';
     if(audio.paused){var a=audio.play();if(a&&a.catch)a.catch(function(){});}
     if(p&&p.catch)p.catch(start);setTimeout(start,7000);}
   vid.addEventListener('timeupdate',function(){if(vid.duration&&vid.currentTime>=vid.duration-1.1)start();});
   vid.addEventListener('ended',start);
-  env.addEventListener('click',open);
+  env.querySelectorAll('[data-lang]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();if(b.dataset.lang==='en')setLang('en');open();});});
   bokeh('bokeh',22);bokeh('bokeh2',14);
 })();
 
@@ -1099,11 +1184,11 @@ document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click
     btnMenos.disabled = cerrado || pasesAUsar <= 1;
     btnMas.disabled   = cerrado || pasesAUsar >= pasesAsignados;
     contNota.textContent = pasesAsignados === 1
-      ? 'Tienes 1 pase reservado para ti.'
-      : 'Tienes ' + pasesAsignados + ' pases reservados. Aumenta el número de pases que vayas a ocupar.';
-    var multi = pasesAsignados > 1;
-    contBox.style.display = multi ? 'flex' : 'none';
-    contPie.style.display = multi ? 'block' : 'none';
+      ? 'Tienes 1 pase reservado para ti. Confirma el número de asistentes:'
+      : 'Tienes ' + pasesAsignados + ' pases reservados. Confirma el número de asistentes:';
+    /* Siempre visible: el invitado confirma cuántas personas asistirán */
+    contBox.style.display = 'flex';
+    contPie.style.display = 'block';
     contPie.textContent = pasesAUsar >= pasesAsignados ? 'Estás usando todos tus pases' : pasesAUsar + ' de ' + pasesAsignados + ' pases';
   }
   function setPases(n){
