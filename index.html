@@ -75,7 +75,27 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .sec:first-of-type{padding-top:84px}
 .sec > *{position:relative;z-index:2}
 /* fondo de imagen tenue */
-.sec[data-bg]::before{content:'';position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:var(--bgo,.9)}
+.sec[data-bg]::before{content:'';position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:var(--bgo,.9);
+  transform:translate3d(0,var(--par,0px),0) scale(1.08);will-change:transform}
+#vestimenta::before,#notas::before{background-size:100% 100%;transform:none}
+#velas::before,#rsvp::before{background-position:center bottom}
+
+/* ── Aura viva: degradado que respira y se mueve en las secciones vino y verde ── */
+.sec > .aura{position:absolute;inset:-25%;z-index:0;pointer-events:none;mix-blend-mode:screen;
+  transform:translate3d(0,var(--par,0px),0);will-change:transform}
+.aura i{position:absolute;border-radius:50%;filter:blur(40px);opacity:.75;animation:auraMove var(--t,22s) ease-in-out infinite alternate;animation-delay:var(--d,0s)}
+.dark .aura i:nth-child(1){width:70%;height:45%;left:-5%;top:10%;background:radial-gradient(circle,rgba(176,40,88,.55),transparent 65%);--t:19s}
+.dark .aura i:nth-child(2){width:65%;height:40%;right:-8%;top:40%;background:radial-gradient(circle,rgba(255,170,80,.22),transparent 65%);--t:24s;--d:-6s}
+.dark .aura i:nth-child(3){width:60%;height:38%;left:20%;bottom:5%;background:radial-gradient(circle,rgba(120,20,60,.6),transparent 65%);--t:28s;--d:-12s}
+.forest .aura i:nth-child(1){width:70%;height:45%;left:-5%;top:8%;background:radial-gradient(circle,rgba(95,130,50,.55),transparent 65%);--t:20s}
+.forest .aura i:nth-child(2){width:62%;height:40%;right:-6%;top:42%;background:radial-gradient(circle,rgba(233,207,151,.18),transparent 65%);--t:25s;--d:-7s}
+.forest .aura i:nth-child(3){width:60%;height:38%;left:18%;bottom:6%;background:radial-gradient(circle,rgba(30,60,10,.7),transparent 65%);--t:29s;--d:-13s}
+@keyframes auraMove{
+  0%{transform:translate(0,0) scale(1) rotate(0)}
+  33%{transform:translate(12%,-8%) scale(1.15) rotate(8deg)}
+  66%{transform:translate(-10%,10%) scale(.92) rotate(-6deg)}
+  100%{transform:translate(6%,4%) scale(1.08) rotate(4deg)}}
+.dark,.forest{background-size:100% 100%}
 .sec::after{ /* grano de papel */
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
   background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");}
@@ -605,7 +625,7 @@ body.locked{overflow:hidden}
   </section>
 
   <!-- VELAS + ITINERARIO -->
-  <section class="sec dark" id="velas">
+  <section class="sec dark" data-bg style="--bgo:.55" id="velas">
     <p class="eyebrow" data-fx="spread">El programa</p>
     <h2 class="h-script" data-fx="blur">A la luz de las velas</h2>
     <p class="lead" data-fx="rise">Una noche que jamás olvidaremos</p>
@@ -781,7 +801,7 @@ body.locked{overflow:hidden}
   </section>
 
   <!-- RSVP -->
-  <section class="sec dark" id="rsvp">
+  <section class="sec dark" data-bg style="--bgo:.5" id="rsvp">
     <div class="bokeh" id="bokeh2" aria-hidden="true"></div>
     <p class="eyebrow" data-fx="spread">Confirmación</p>
     <h2 class="h-script" data-fx="blur">¿Nos acompañas?</h2>
@@ -825,10 +845,17 @@ body.locked{overflow:hidden}
 'use strict';
 var BG='https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-rocio-y-quentin/';
 /* Fondos marfil/dorado por sección */
-var bgs={bienvenida:'peony-1.jpg',lugares:'marble-1.jpg',vestimenta:'peony-2.jpg',familia:'peony-3.jpg',notas:'peony-4.jpg',regalos:'marble-2.jpg'};
+var bgs={bienvenida:'g-peonias.jpg',lugares:'g-marmol.jpg',vestimenta:'g-marco.jpg',familia:'g-peonias.jpg',notas:'g-marco.jpg',regalos:'g-marmol.jpg',velas:'g-velas.jpg',rsvp:'g-velas.jpg'};
 var st=document.createElement('style');
 st.textContent=Object.keys(bgs).map(function(k){return '#'+k+'::before{background-image:url('+BG+bgs[k]+')}';}).join('');
 document.head.appendChild(st);
+
+/* ── Aura viva + parallax suave al hacer scroll ── */
+document.querySelectorAll('.dark,.forest').forEach(function(sec){var a=document.createElement('span');a.className='aura';a.setAttribute('aria-hidden','true');a.innerHTML='<i></i><i></i><i></i>';sec.insertBefore(a,sec.firstChild);});
+(function(){var secs=[].slice.call(document.querySelectorAll('.sec')),tick=false;
+  function upd(){tick=false;var vh=innerHeight;secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;
+    var c=(r.top+r.height/2-vh/2)/vh;s.style.setProperty('--par',(c*-40).toFixed(1)+'px');});}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();})();
 
 /* ── Entradas: cada elemento con su efecto ── */
 function initFx(){
