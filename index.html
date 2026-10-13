@@ -81,9 +81,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 /* Vestimenta: guirnalda arriba y abajo, al ancho exacto (sin estirar), centro marfil liso */
 #vestimenta{background:#F5EFE1;--sh:min(33vw,185px)}
 #vestimenta::before{content:'';position:absolute;left:0;right:0;z-index:0;pointer-events:none;
-  top:calc(var(--seam) - 40px);bottom:calc(var(--seam) - 80px);opacity:1;transform:none;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(var(--sh)*.5),transparent var(--sh),transparent calc(100% - var(--sh)),#000 calc(100% - var(--sh)*.5),#000 calc(100% - 46px),transparent 100%);
-          mask-image:linear-gradient(to bottom,#000 0,#000 calc(var(--sh)*.5),transparent var(--sh),transparent calc(100% - var(--sh)),#000 calc(100% - var(--sh)*.5),#000 calc(100% - 46px),transparent 100%);
+  top:calc(var(--seam) - 20px);bottom:calc(var(--seam) - 80px);opacity:1;transform:none;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 60px,#000 calc(var(--sh)*.55),transparent var(--sh),transparent calc(100% - var(--sh)),#000 calc(100% - var(--sh)*.5),#000 calc(100% - 46px),transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 60px,#000 calc(var(--sh)*.55),transparent var(--sh),transparent calc(100% - var(--sh)),#000 calc(100% - var(--sh)*.5),#000 calc(100% - 46px),transparent 100%);
   background:url(https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-rocio-y-quentin/dc-top.jpg) top center/100% auto no-repeat,
              url(https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-rocio-y-quentin/dc-bottom.jpg) bottom center/100% auto no-repeat}
 #vestimenta .card{margin-top:40px;margin-bottom:40px}
@@ -198,7 +198,13 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
 /* ═══════════════ BIENVENIDA ═══════════════ */
 .monogram{width:190px;height:190px;margin:0 auto 18px;position:relative;padding:10px;border-radius:50%;background:radial-gradient(circle,rgba(255,252,246,.95) 55%,rgba(255,252,246,0) 72%)}
-.monogram img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(153,101,21,.25))}
+.monogram .mono{width:100%;height:100%;filter:drop-shadow(0 4px 10px rgba(153,101,21,.25))}
+/* Monograma: aro de laurel girando suave alrededor de las iniciales fijas */
+.mono{position:relative;display:block;aspect-ratio:1}
+.mono img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.mono-aro{animation:spin 48s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mono-ft{width:120px;margin:0 auto 14px;filter:brightness(1.15)}
 .monogram .mg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--script);font-size:54px;padding-top:6px}
 .quote{font-family:var(--display);font-style:italic;font-size:21px;line-height:1.6;color:var(--ink);max-width:30ch;margin:0 auto}
 .quote-sign{margin-top:16px;font-weight:700;letter-spacing:.3em;font-size:13px;text-transform:uppercase;color:var(--wine)}
@@ -393,9 +399,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @keyframes bankSheen{0%,60%{left:-80%}100%{left:140%}}
 .bank-top{display:flex;justify-content:space-between;align-items:flex-start}
 .bank-lbl{font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,231,206,.75)}
-.bank-mono{width:62px;height:62px;margin:-8px -6px 0 0;object-fit:contain;filter:brightness(1.25) saturate(1.1) drop-shadow(0 0 8px rgba(255,200,120,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.45))}
-.bank-wm{position:absolute;right:-34px;bottom:-30px;width:210px;height:210px;opacity:.09;pointer-events:none;filter:brightness(1.4) blur(.3px);mix-blend-mode:screen}
-.bank > *{position:relative;z-index:1}.bank > .bank-wm{position:absolute;z-index:0}.bank > .bank-name{position:absolute}
+.bank-mono{width:62px;height:62px;margin:-8px -6px 0 0;filter:brightness(1.25) saturate(1.1) drop-shadow(0 0 8px rgba(255,200,120,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.45))}
+.bank-wm{display:block;position:absolute;right:-34px;bottom:-30px;width:210px;height:210px;opacity:.09;pointer-events:none;filter:brightness(1.4) blur(.3px);mix-blend-mode:screen}
+.bank > *{position:relative;z-index:1}.bank > .bank-wm{display:block;position:absolute;z-index:0}.bank > .bank-name{position:absolute}
 .chip{width:44px;height:33px;margin:14px 0 12px;border-radius:7px;background:linear-gradient(135deg,#F7E7CE,#C79A3E 45%,#8a5a12);position:relative;box-shadow:inset 0 0 0 1px rgba(110,74,15,.5)}
 .chip::before{content:'';position:absolute;inset:7px 9px;border:1px solid rgba(110,74,15,.55);border-radius:3px}
 .chip::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(110,74,15,.5)}
@@ -577,7 +583,7 @@ body.locked{overflow:hidden}
 
   <!-- BIENVENIDA -->
   <section class="sec light" data-bg style="--bgo:.95" id="bienvenida">
-    <div class="monogram" data-fx="zoom"><img src="monograma.png" alt="Monograma R&amp;Q" width="600" height="600" /></div>
+    <div class="monogram" data-fx="zoom"><span class="mono " aria-hidden="true"><img class="mono-aro" src="mono-aro.png" alt="" width="600" height="600" /><img class="mono-let" src="mono-letras.png" alt="" width="600" height="600" /></span></div>
     <p class="quote" data-fx="blur" style="--d:.2s">“Bajo la luz de las velas y entre el verde del jardín, prometeremos amarnos para siempre. Nada nos haría más felices que compartir ese momento contigo.”</p>
     <p class="quote-sign" data-fx="spread" style="--d:.5s">Rocio &amp; Quentin</p>
   </section>
@@ -745,8 +751,8 @@ body.locked{overflow:hidden}
     <div class="rule" data-fx="zoom"><i></i><b></b><i></i></div>
     <p class="g-head" data-fx="rise">Transferencia</p>
     <div class="bank" id="bank" data-fx="tilt">
-      <div class="bank-top"><span class="bank-lbl">Mesa de regalos</span><img class="bank-mono" src="monograma.png" alt="Monograma R&amp;Q" width="600" height="600" /></div>
-      <img class="bank-wm" src="monograma.png" alt="" aria-hidden="true" />
+      <div class="bank-top"><span class="bank-lbl">Mesa de regalos</span><span class="mono bank-mono" aria-hidden="true"><img class="mono-aro" src="mono-aro.png" alt="" width="600" height="600" /><img class="mono-let" src="mono-letras.png" alt="" width="600" height="600" /></span></div>
+      <span class="mono bank-wm" aria-hidden="true"><img class="mono-aro" src="mono-aro.png" alt="" width="600" height="600" /><img class="mono-let" src="mono-letras.png" alt="" width="600" height="600" /></span>
       <div class="chip" aria-hidden="true"></div>
       <div class="bank-row"><div><span class="bank-k">Routing</span><span class="bank-v">211370150</span></div><button type="button" class="copy" data-copy="211370150">Copiar</button></div>
       <div class="bank-row"><div><span class="bank-k">Cuenta</span><span class="bank-v">102895721</span></div><button type="button" class="copy" data-copy="102895721">Copiar</button></div>
@@ -832,7 +838,7 @@ body.locked{overflow:hidden}
   </section>
 
   <footer>
-    <img src="monograma.png" alt="" width="600" height="600" style="width:120px;height:auto;margin:0 auto 14px;filter:brightness(1.15)" data-fx="zoom" />
+    <div data-fx="zoom"><span class="mono mono-ft" aria-hidden="true"><img class="mono-aro" src="mono-aro.png" alt="" width="600" height="600" /><img class="mono-let" src="mono-letras.png" alt="" width="600" height="600" /></span></div>
     <p class="ft-names foil" data-fx="blur">Rocio &amp; Quentin</p>
     <p class="ft-date" data-fx="spread">20 · 11 · 2026 · SAN ANTONIO, TX</p>
     <a class="ft-credit" href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener">Diseño · @elysium.invitaciones</a>
