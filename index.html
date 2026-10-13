@@ -122,6 +122,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .dark .h-script,.forest .h-script{color:var(--champ)}
 .foil{background:var(--foil);background-size:240% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold);animation:foil 8s linear infinite}
 @keyframes foil{to{background-position:240% center}}
+.lead-big{font-family:var(--display);font-size:clamp(21px,5.6vw,26px);color:var(--wine);max-width:28ch;line-height:1.5}
 .lead{font-size:19px;font-style:italic;font-weight:500;color:var(--ink-soft);max-width:34ch;margin:10px auto 0;line-height:1.55}
 .dark .lead,.forest .lead{color:rgba(247,231,206,.88)}
 .rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 30px;width:220px}
@@ -584,8 +585,8 @@ body.locked{overflow:hidden}
   <!-- BIENVENIDA -->
   <section class="sec light" data-bg style="--bgo:.95" id="bienvenida">
     <div class="monogram" data-fx="zoom"><span class="mono " aria-hidden="true"><img class="mono-aro" src="mono-aro.png" alt="" width="600" height="600" /><img class="mono-let" src="mono-letras.png" alt="" width="600" height="600" /></span></div>
-    <p class="quote" data-fx="blur" style="--d:.2s">“Bajo la luz de las velas y entre el verde del jardín, prometeremos amarnos para siempre. Nada nos haría más felices que compartir ese momento contigo.”</p>
-    <p class="quote-sign" data-fx="spread" style="--d:.5s">Rocio &amp; Quentin</p>
+    <p class="quote" data-fx="blur" style="--d:.2s">“Entonces te das cuenta, que no es quien te mueve el piso,<br>sino quien te centra.<br>No es quien te roba el corazón,<br>sino quien te hace sentir<br>que lo tienes de vuelta.”</p>
+    <p class="quote-sign" data-fx="spread" style="--d:.5s">— Pablo Neruda</p>
   </section>
 
   <!-- COUNTDOWN -->
@@ -602,14 +603,12 @@ body.locked{overflow:hidden}
 
   <!-- LUGARES -->
   <section class="sec paper" data-bg style="--bgo:.9" id="lugares">
-    <p class="eyebrow" data-fx="spread">Nos encontramos aquí</p>
-    <h2 class="h-script" data-fx="blur">Dónde celebraremos</h2>
-    <p class="lead" data-fx="rise">Una noche de jardín, rodeados de velas</p>
+    <p class="lead lead-big" data-fx="blur">Nos encontramos aquí, en donde celebraremos el amor que nos unió y el comienzo de nuestro para siempre.</p>
     <div class="rule" data-fx="zoom"><i></i><b></b><i></i></div>
     <div class="locs">
       <article class="card" data-fx="left" style="--lv:0s">
-        <div class="loc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M9 5h6M5 22V12l7-4 7 4v10M9 22v-5a3 3 0 016 0v5"/></svg></div>
-        <p class="loc-type">Ceremonia religiosa</p>
+        <div class="loc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M10 5l2-2.5L14 5"/></svg></div>
+        <p class="loc-type">Ceremonia civil</p>
         <p class="loc-time foil">5:00 PM</p>
         <h3 class="loc-name">Tuscany Wedding Venue</h3>
         <p class="loc-addr">16102 Old Fredericksburg Rd<br>San Antonio, TX 78257</p>
@@ -629,14 +628,13 @@ body.locked{overflow:hidden}
   <!-- VELAS + ITINERARIO -->
   <section class="sec dark" data-bg style="--bgo:.55" id="velas">
     <p class="eyebrow" data-fx="spread">El programa</p>
-    <h2 class="h-script" data-fx="blur">A la luz de las velas</h2>
     <p class="lead" data-fx="rise">Una noche que jamás olvidaremos</p>
     <div class="it" id="itin">
       <div class="it-track" aria-hidden="true"><span class="it-base"></span><span class="it-glow"></span><span class="it-mid"></span><span class="it-core"></span><span class="it-pearl"></span></div>
-      <div class="it-ev" data-fx="rise"><span class="it-ic"><img src="ic-church.webp" alt="" width="120" height="120" /></span>
-        <div class="it-card"><p class="it-time foil">5:00 PM</p><p class="it-name">Ceremonia</p><p class="it-desc">Nos unimos ante Dios</p></div></div>
+      <div class="it-ev" data-fx="rise"><span class="it-ic"><img src="ic-rings.webp" alt="" width="120" height="120" /></span>
+        <div class="it-card"><p class="it-time foil">5:00 PM</p><p class="it-name">Ceremonia</p></div></div>
       <div class="it-ev" data-fx="rise"><span class="it-ic"><img src="ic-cocktail.webp" alt="" width="120" height="120" /></span>
-        <div class="it-card"><p class="it-time foil">6:00 PM</p><p class="it-name">Cóctel y fotografías</p><p class="it-desc">Un brindis entre velas y jardín</p></div></div>
+        <div class="it-card"><p class="it-time foil">6:00 PM</p><p class="it-name">Cóctel y fotografías</p></div></div>
       <div class="it-ev" data-fx="rise"><span class="it-ic"><img src="ic-plate.webp" alt="" width="120" height="120" /></span>
         <div class="it-card"><p class="it-time foil">7:00 PM</p><p class="it-name">Recepción</p><p class="it-desc">Cena, música y celebración</p></div></div>
     </div>
@@ -653,7 +651,7 @@ body.locked{overflow:hidden}
       <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="hit">20</span><span>21</span>
     </div>
     <div data-fx="rise"><a class="btn btn-gold" target="_blank" rel="noopener"
-      href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda+de+Rocio+%26+Quentin&amp;dates=20261120T170000/20261121T000000&amp;ctz=America/Chicago&amp;details=Ceremonia+religiosa+5:00+PM+%C2%B7+Recepci%C3%B3n+6:00+PM+%E2%80%94+Tuscany+Wedding+Venue%2C+San+Antonio%2C+TX.&amp;location=Tuscany+Wedding+Venue%2C+16102+Old+Fredericksburg+Rd%2C+San+Antonio%2C+TX+78257">
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda+de+Rocio+%26+Quentin&amp;dates=20261120T170000/20261121T000000&amp;ctz=America/Chicago&amp;details=Ceremonia+civil+5:00+PM+%C2%B7+Recepci%C3%B3n+6:00+PM+%E2%80%94+Tuscany+Wedding+Venue%2C+San+Antonio%2C+TX.&amp;location=Tuscany+Wedding+Venue%2C+16102+Old+Fredericksburg+Rd%2C+San+Antonio%2C+TX+78257">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agregar a Google Calendar</a></div>
   </section>
 
@@ -667,12 +665,6 @@ body.locked{overflow:hidden}
         <div class="dc-col"><img src="caballero.png" alt="Traje formal" width="197" height="400" loading="lazy" /><p class="dc-lbl">Hombres</p><p class="dc-val">Traje formal</p></div>
         <span class="dc-sep" aria-hidden="true"></span>
         <div class="dc-col"><img src="dama.png" alt="Vestido largo" width="164" height="400" loading="lazy" /><p class="dc-lbl">Mujeres</p><p class="dc-val">Vestido largo</p></div>
-      </div>
-      <p class="dc-lead">Colores sugeridos</p>
-      <div class="palette">
-        <div><div class="sw" style="background:#791a3d"></div><p class="sw-n">Vino</p></div>
-        <div><div class="sw" style="background:#263e0f"></div><p class="sw-n">Verde</p></div>
-        <div><div class="sw" style="background:linear-gradient(135deg,#F7E7CE,#C79A3E 40%,#996515 75%,#6E4A0F)"></div><p class="sw-n">Dorado</p></div>
       </div>
       <div class="avoid"><span class="x" aria-hidden="true"></span><p>Con cariño, les pedimos <strong>no usar blanco</strong>: está reservado para la novia.</p></div>
     </article>
@@ -701,8 +693,7 @@ body.locked{overflow:hidden}
 
   <!-- FAMILIA -->
   <section class="sec light" data-bg style="--bgo:.95" id="familia">
-    <p class="eyebrow" data-fx="spread">Con la bendición de Dios</p>
-    <h2 class="h-script" data-fx="blur">y de nuestros padres</h2>
+    <h2 class="h-script" data-fx="blur">Con la bendición de nuestros padres</h2>
     <div class="rule" data-fx="zoom"><i></i><b></b><i></i></div>
     <div class="fam">
       <div class="card" data-fx="left" style="--lv:-1s"><h3>Padres de la novia</h3><p>Olga Rivera Sariñana</p><p>Aristeo Chávez Garcia</p></div>
@@ -737,7 +728,7 @@ body.locked{overflow:hidden}
       <div class="notes">
         <div class="note"><i>1</i><p>Con todo el cariño, hemos decidido que nuestra celebración sea <strong>exclusiva para adultos</strong>. Gracias por tu comprensión.</p></div>
         <div class="note"><i>2</i><p>Agradecemos tu compromiso y puntualidad por respeto al protocolo.</p></div>
-        <div class="note"><i>3</i><p>Nos dará mucha emoción ver que nos acompañen desde la ceremonia religiosa.</p></div>
+        <div class="note"><i>3</i><p>Nos dará mucha emoción ver que nos acompañen desde la ceremonia civil.</p></div>
         <div class="note"><i>4</i><p>Los pases asignados son intransferibles; agradecemos tu sinceridad para registrar la asistencia o ausencia de los miembros de tu invitación.</p></div>
       </div>
     </article>
