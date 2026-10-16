@@ -457,7 +457,13 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .rsvp-card{color:var(--ink)}
 .rsvp-text{font-size:18px;margin:4px 0 18px}
 .rsvp-text strong{color:var(--wine)}
-#rsvp-name-display{font-family:var(--script);font-size:42px;color:var(--wine);line-height:1.2;margin:0 0 12px}
+.rsvp-para-lbl{font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-lo);margin:0 0 4px}
+#rsvp-name-display{display:inline-block;font-family:var(--script);font-size:clamp(44px,12vw,58px);line-height:1.25;margin:0 0 12px;padding:.05em .25em;
+  background:linear-gradient(100deg,#4a0f25 0%,#791a3d 28%,#B8862E 44%,#F3DC8E 50%,#B8862E 56%,#791a3d 72%,#4a0f25 100%);background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--wine);
+  filter:drop-shadow(0 1px 1px rgba(255,255,255,.8)) drop-shadow(0 2px 10px rgba(121,26,61,.2));animation:paraSweep 7s linear infinite}
+@keyframes paraSweep{from{background-position:120% 50%}to{background-position:-120% 50%}}
+@media (prefers-reduced-motion:reduce){#rsvp-name-display{animation:none;background-position:50% 50%}}
 .rsvp-pases-display{display:flex;align-items:center;justify-content:space-between;margin:0 auto 18px;padding:12px 22px;border-radius:14px;background:rgba(121,26,61,.06);border:1px solid rgba(153,101,21,.35)}
 .rsvp-pases-label{font-weight:700;font-size:14px;letter-spacing:.28em;text-transform:uppercase}
 .rsvp-pases-num{font-family:var(--display);font-style:italic;font-size:40px;color:var(--wine);line-height:1}
@@ -810,6 +816,7 @@ body.locked{overflow:hidden}
     <h2 class="h-script" data-fx="blur">¿Nos acompañas?</h2>
     <article class="card rsvp-card" data-fx="tilt" style="margin-top:24px">
       <p class="rsvp-text">Eres muy importante para nosotros, hemos reservado lugares en tu honor. Por favor confírmanos tu asistencia antes del <strong>8 de noviembre de 2026</strong>.</p>
+      <p class="rsvp-para-lbl" id="rsvpParaLbl" style="display:none">Esta invitación es para</p>
       <p id="rsvp-name-display" style="display:none"></p>
       <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none"><div class="rsvp-pases-label">Pases</div><div class="rsvp-pases-num" id="rsvp-pases-num">1</div></div>
       <div id="rsvp-bandeja">
@@ -857,6 +864,7 @@ document.head.appendChild(st);
 
 /* ── Idioma: inglés por diccionario de textos (incluye los textos dinámicos del RSVP) ── */
 var EN={
+"Esta invitación es para":"This invitation is for",
 "Enciende la música":"Turn on the music","Nuestra boda":"Our wedding","VIERNES":"FRIDAY","NOV · 2026":"NOV · 2026",
 "“Entonces te das cuenta, que no es quien te mueve el piso,":"“Then you realize it is not the one who sweeps you off your feet,",
 "sino quien te centra.":"but the one who keeps you grounded.","No es quien te roba el corazón,":"It is not the one who steals your heart,",
@@ -1140,7 +1148,7 @@ document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click
   }
   function pintaEncabezado(){
     if(pasesNumEl) pasesNumEl.textContent = pasesAsignados;
-    if(urlPara && nameEl){ nameEl.textContent = urlPara; nameEl.style.display = ''; }
+    if(urlPara && nameEl){ nameEl.textContent = urlPara; nameEl.style.display = ''; var lb = document.getElementById('rsvpParaLbl'); if(lb) lb.style.display = ''; }
     if(dispEl) dispEl.style.display = urlPara ? '' : 'none';
   }
 
@@ -1279,7 +1287,7 @@ document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click
       if(!nombres.length){ setFb('Por favor escribe al menos un nombre.', ROJO); return; }
       /* Dos personas en un solo campo ("Ana & Luis") se guardaban como UNA */
       for(var d=0; d<inputs.length; d++){
-        if(/[&\/+,]|\sand\s/i.test(inputs[d].value.trim())){
+        if(/[&\/+,]|\s(y|and)\s/i.test(inputs[d].value.trim())){
           inputs[d].classList.add('rsvp-input-falta');
           setFb('Escribe un solo nombre por campo. Si asisten más personas, sube el contador y escribe cada nombre en su campo.', ROJO);
           inputs[d].focus({ preventScroll:true }); return;
