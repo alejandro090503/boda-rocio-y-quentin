@@ -405,7 +405,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .bank-lbl{font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,231,206,.75)}
 .bank-mono{width:62px;height:62px;margin:-8px -6px 0 0;filter:brightness(1.25) saturate(1.1) drop-shadow(0 0 8px rgba(255,200,120,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.45))}
 .bank-wm{display:block;position:absolute;right:-34px;bottom:-30px;width:210px;height:210px;opacity:.09;pointer-events:none;filter:brightness(1.4) blur(.3px);mix-blend-mode:screen}
-.bank > *{position:relative;z-index:1}.bank > .bank-wm{display:block;position:absolute;z-index:0}.bank > .bank-name{position:absolute}
+.bank > *{position:relative;z-index:1}.bank > .bank-wm{display:block;position:absolute;z-index:0}.bank > .bank-sep{height:1px;margin:12px 0 4px;background:linear-gradient(90deg,transparent,rgba(233,207,151,.45),transparent)}
+.bank-name{position:absolute}
 .chip{width:44px;height:33px;margin:14px 0 12px;border-radius:7px;background:linear-gradient(135deg,#F7E7CE,#C79A3E 45%,#8a5a12);position:relative;box-shadow:inset 0 0 0 1px rgba(110,74,15,.5)}
 .chip::before{content:'';position:absolute;inset:7px 9px;border:1px solid rgba(110,74,15,.55);border-radius:3px}
 .chip::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(110,74,15,.5)}
@@ -680,6 +681,12 @@ body.locked{overflow:hidden}
         <span class="dc-sep" aria-hidden="true"></span>
         <div class="dc-col"><img src="dama.png" alt="Vestido largo" width="164" height="400" loading="lazy" /><p class="dc-lbl">Mujeres</p><p class="dc-val">Vestido largo</p></div>
       </div>
+      <p class="dc-lead">Colores sugeridos</p>
+      <div class="palette">
+        <div><div class="sw" style="background:#6d1a2e"></div><p class="sw-n">Burgundy</p></div>
+        <div><div class="sw" style="background:#556b2f"></div><p class="sw-n">Verde olivo</p></div>
+        <div><div class="sw" style="background:#4a2c1d"></div><p class="sw-n">Café chocolate</p></div>
+      </div>
       <div class="avoid"><span class="x" aria-hidden="true"></span><p>Con cariño, les pedimos <strong>no usar blanco</strong>: está reservado para la novia.</p></div>
     </article>
   </section>
@@ -717,22 +724,6 @@ body.locked{overflow:hidden}
   </section>
 
   <!-- RETRATO -->
-  <section class="sec paper" id="historia">
-    <p class="eyebrow" data-fx="spread">Nuestra historia</p>
-    <h2 class="h-script" data-fx="blur">Momentos juntos</h2>
-    <!-- PENDIENTE CLIENTE: más fotos (por ahora son recortes de la única foto) -->
-    <div class="reel" id="reel" data-fx="zoom">
-      <div class="reel-track">
-        <figure class="slide" data-cap="Juntos para siempre"><div class="frm"><img src="hist-1.jpg" alt="Rocio y Quentin" loading="lazy" /></div></figure>
-        <figure class="slide" data-cap="Tu sonrisa, mi hogar"><div class="frm"><img src="hist-2.jpg" alt="Rocio y Quentin" loading="lazy" /></div></figure>
-        <figure class="slide" data-cap="El amor de mi vida"><div class="frm"><img src="hist-3.jpg" alt="Rocio" loading="lazy" /></div></figure>
-        <figure class="slide" data-cap="Mi compañero"><div class="frm"><img src="hist-4.jpg" alt="Quentin" loading="lazy" /></div></figure>
-      </div>
-    </div>
-    <div class="reel-dots" id="reelDots"></div>
-    <p class="reel-cap" id="reelCap">Juntos para siempre</p>
-  </section>
-
   <!-- NOTAS -->
   <section class="sec light" data-bg style="--bgo:.95" id="notas">
     <article class="card" data-fx="unveil">
@@ -759,6 +750,8 @@ body.locked{overflow:hidden}
       <div class="chip" aria-hidden="true"></div>
       <div class="bank-row"><div><span class="bank-k">Routing</span><span class="bank-v">211370150</span></div><button type="button" class="copy" data-copy="211370150">Copiar</button></div>
       <div class="bank-row"><div><span class="bank-k">Cuenta</span><span class="bank-v">102895721</span></div><button type="button" class="copy" data-copy="102895721">Copiar</button></div>
+      <div class="bank-sep" aria-hidden="true"></div>
+      <div class="bank-row"><div><span class="bank-k">BBVA</span><span class="bank-v bank-v-sm">4815 1630 5604 5373</span></div><button type="button" class="copy" data-copy="4815163056045373">Copiar</button></div>
       <span class="bank-name">Rocio &amp; Quentin</span>
     </div>
   </section>
@@ -902,7 +895,7 @@ var EN={
 "Por favor elige si podrás acompañarnos.":"Please choose whether you can join us.","Por favor escribe al menos un nombre.":"Please write at least one name.",
 "Hubo un problema al enviar. Inténtalo de nuevo.":"There was a problem sending. Please try again.","Sin conexión. Verifica tu internet e inténtalo de nuevo.":"No connection. Check your internet and try again.",
 "No encontramos tu invitación. Pide a los novios que te envíen tu enlace de nuevo.":"We couldn't find your invitation. Ask the couple to send you your link again.",
-"Diseño · @elysium.invitaciones":"Design · @elysium.invitaciones","20 · 11 · 2026 · SAN ANTONIO, TX":"11 · 20 · 2026 · SAN ANTONIO, TX"
+"Colores sugeridos":"Suggested colors","Burgundy":"Burgundy","Verde olivo":"Olive green","Café chocolate":"Chocolate brown","Diseño · @elysium.invitaciones":"Design · @elysium.invitaciones","20 · 11 · 2026 · SAN ANTONIO, TX":"11 · 20 · 2026 · SAN ANTONIO, TX"
 };
 var EN_RX=[
  [/^Tienes 1 pase reservado para ti\. Confirma el número de asistentes:$/,'You have 1 pass reserved for you. Confirm the number of guests:'],
@@ -1036,23 +1029,6 @@ mbtn.addEventListener('click',function(e){mbtn.classList.remove('hint');e.stopPr
     evs.forEach(function(e){var ic=e.querySelector('.it-ic').getBoundingClientRect();e.classList.toggle('on',(ic.top+ic.height/2)-r.top<=p*h+4)});
   }
   addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
-})();
-
-/* ── Carrusel horizontal tipo coverflow, automático ── */
-(function(){
-  var reel=document.getElementById('reel');if(!reel)return;
-  var sl=[].slice.call(reel.querySelectorAll('.slide')),dots=document.getElementById('reelDots'),cap=document.getElementById('reelCap'),n=sl.length,i=0,timer;
-  sl.forEach(function(_,k){var b=document.createElement('button');b.setAttribute('aria-label','Foto '+(k+1));b.onclick=function(){go(k);auto()};dots.appendChild(b)});
-  function go(k){i=(k+n)%n;
-    sl.forEach(function(s,k2){var o=((k2-i+n+n/2)%n)-n/2;var a=Math.abs(o);
-      s.style.transform='translateX('+(o*68)+'%) translateZ('+(-a*160)+'px) rotateY('+(-o*24)+'deg)';
-      s.style.opacity=a>1.5?0:(a?.55:1);s.style.filter=a?'blur(1.5px) brightness(.9)':'none';s.style.zIndex=10-a;s.classList.toggle('is-c',!a)});
-    [].forEach.call(dots.children,function(d,k3){d.classList.toggle('on',k3===i)});
-    cap.style.opacity=0;setTimeout(function(){cap.textContent=sl[i].dataset.cap;cap.style.opacity=1},300);}
-  function auto(){clearInterval(timer);timer=setInterval(function(){go(i+1)},3800)}
-  var x0=null;reel.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
-  reel.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));auto()}x0=null});
-  go(0);auto();
 })();
 
 /* ── Lluvia de sobres: caen hasta que la sección se centra y aterriza uno ── */
