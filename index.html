@@ -605,6 +605,18 @@ body.locked{overflow:hidden}
   </section>
 
   <!-- COUNTDOWN -->
+  <!-- FAMILIA -->
+  <section class="sec light" data-bg style="--bgo:.95" id="familia">
+    <h2 class="h-script" data-fx="blur">Con la bendición de nuestros padres</h2>
+    <p class="lead lead-big" data-fx="rise">tenemos el honor de invitarte a celebrar nuestra unión</p>
+    <div class="rule" data-fx="zoom"><i></i><b></b><i></i></div>
+    <div class="fam">
+      <div class="card" data-fx="left" style="--lv:-1s"><h3>Padres de la novia</h3><p>Olga Rivera Sariñana</p><p>Aristeo Chávez Garcia</p></div>
+      <div class="card" data-fx="right" style="--lv:-4s"><h3>Padres del novio</h3><p>Rosalinda Salazar Snuggs</p><p class="fam-sp">&amp; Terry R. Snuggs, II</p><p class="fam-gap">Roberto Eduardo De La Garza</p><p class="fam-sp">&amp; Diana T. Pittman</p></div>
+      <!-- PENDIENTE CLIENTE: padrinos -->
+    </div>
+  </section>
+
   <section class="sec forest" id="cuenta">
     <p class="eyebrow" data-fx="spread">Faltan</p>
     <h2 class="h-script" data-fx="blur">Nuestro gran día</h2>
@@ -712,16 +724,7 @@ body.locked{overflow:hidden}
     <a class="link" href="https://www.google.com/search?q=clima+San+Antonio+Texas+20+noviembre" target="_blank" rel="noopener" data-fx="rise">Consulta el pronóstico</a>
   </section>
 
-  <!-- FAMILIA -->
-  <section class="sec light" data-bg style="--bgo:.95" id="familia">
-    <h2 class="h-script" data-fx="blur">Con la bendición de nuestros padres</h2>
-    <div class="rule" data-fx="zoom"><i></i><b></b><i></i></div>
-    <div class="fam">
-      <div class="card" data-fx="left" style="--lv:-1s"><h3>Padres de la novia</h3><p>Olga Rivera Sariñana</p><p>Aristeo Chávez Garcia</p></div>
-      <div class="card" data-fx="right" style="--lv:-4s"><h3>Padres del novio</h3><p>Rosalinda Salazar Snuggs</p><p class="fam-sp">&amp; Terry R. Snuggs, II</p><p class="fam-gap">Roberto Eduardo De La Garza</p><p class="fam-sp">&amp; Diana T. Pittman</p></div>
-      <!-- PENDIENTE CLIENTE: padrinos -->
-    </div>
-  </section>
+
 
   <!-- RETRATO -->
   <!-- NOTAS -->
@@ -846,7 +849,7 @@ body.locked{overflow:hidden}
 'use strict';
 var BG='https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-rocio-y-quentin/';
 /* Fondos marfil/dorado por sección */
-var bgs={bienvenida:'g-peonias.jpg',lugares:'g-marmol.jpg',familia:'g-peonias.jpg',notas:'g-marco.jpg',regalos:'g-marmol.jpg',velas:'g-velas.jpg',rsvp:'g-velas.jpg'};
+var bgs={bienvenida:'g-peonias.jpg',lugares:'g-marmol.jpg',familia:'g-marmol.jpg',notas:'g-marco.jpg',regalos:'g-marmol.jpg',velas:'g-velas.jpg',rsvp:'g-velas.jpg'};
 var st=document.createElement('style');
 st.textContent=Object.keys(bgs).map(function(k){return '#'+k+'::before{background-image:url('+BG+bgs[k]+')}';}).join('');
 document.head.appendChild(st);
@@ -869,7 +872,7 @@ var EN={
 "Lluvia":"Rain","Día":"Day","Noche":"Night","70°F de día · 48°F de noche":"70°F by day · 48°F at night",
 "Noviembre en San Antonio es templado por la tarde y":"November in San Antonio is mild in the afternoon and",
 "fresco al caer la noche":"cool after sunset",". La celebración será en jardín: te sugerimos traer un chal o saco ligero.":". The celebration will be in a garden: we suggest bringing a light shawl or jacket.",
-"Consulta el pronóstico":"Check the forecast","Con la bendición de nuestros padres":"With the blessing of our parents",
+"Consulta el pronóstico":"Check the forecast","Con la bendición de nuestros padres":"With the blessing of our parents,","tenemos el honor de invitarte a celebrar nuestra unión":"we are honored to invite you to celebrate our union",
 "Padres de la novia":"Parents of the bride","Padres del novio":"Parents of the groom","Padrinos":"Godparents","Por confirmar":"To be confirmed",
 "Nuestra historia":"Our story","Momentos juntos":"Moments together","Juntos para siempre":"Together forever","Tu sonrisa, mi hogar":"Your smile, my home",
 "El amor de mi vida":"The love of my life","Mi compañero":"My partner","Para tomar en cuenta":"Please note","Notas":"Notes",
