@@ -815,7 +815,7 @@ body.locked{overflow:hidden}
     <p class="eyebrow" data-fx="spread">Confirmación</p>
     <h2 class="h-script" data-fx="blur">¿Nos acompañas?</h2>
     <article class="card rsvp-card" data-fx="tilt" style="margin-top:24px">
-      <p class="rsvp-text">Eres muy importante para nosotros, hemos reservado lugares en tu honor. Por favor confírmanos tu asistencia antes del <strong>8 de noviembre de 2026</strong>.</p>
+      <p class="rsvp-text">Eres muy importante para nosotros, hemos reservado lugares en tu honor. Por favor confírmanos tu asistencia antes del <strong>9 de noviembre de 2026</strong>.</p>
       <p class="rsvp-para-lbl" id="rsvpParaLbl" style="display:none">Esta invitación es para</p>
       <p id="rsvp-name-display" style="display:none"></p>
       <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none"><div class="rsvp-pases-label">Pases</div><div class="rsvp-pases-num" id="rsvp-pases-num">1</div></div>
@@ -841,7 +841,7 @@ body.locked{overflow:hidden}
         <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button">Modificar mi respuesta</button>
       </div>
       <p id="rsvp-feedback"></p>
-      <p class="rsvp-deadline">Fecha límite · 8 de noviembre de 2026</p>
+      <p class="rsvp-deadline">Fecha límite · 9 de noviembre de 2026</p>
     </article>
   </section>
 
@@ -897,9 +897,9 @@ var EN={
 "Subir mis fotos":"Upload my photos","El álbum de fotos se habilita el día del evento. Regresa aquí y sube todas tus fotos de la noche.":"The photo album opens on the day of the event. Come back here and upload all your photos from the night.",
 "Confirmación":"RSVP","¿Nos acompañas?":"Will you join us?",
 "Eres muy importante para nosotros, hemos reservado lugares en tu honor. Por favor confírmanos tu asistencia antes del":"You are very important to us and we have reserved seats in your honor. Please confirm your attendance before",
-"8 de noviembre de 2026":"November 8, 2026","Pases":"Passes","Asistiré":"I will attend","No podré asistir":"I can't attend",
+"9 de noviembre de 2026":"November 9, 2026","Pases":"Passes","Asistiré":"I will attend","No podré asistir":"I can't attend",
 "Número de asistentes":"Number of guests","Confirmar asistencia":"Confirm attendance","Confirmar":"Confirm","Modificar mi respuesta":"Change my answer",
-"Fecha límite · 8 de noviembre de 2026":"Deadline · November 8, 2026","Actualizar respuesta":"Update answer","Enviando…":"Sending…",
+"Fecha límite · 9 de noviembre de 2026":"Deadline · November 9, 2026","Actualizar respuesta":"Update answer","Enviando…":"Sending…",
 "¡Gracias por confirmar!":"Thank you for confirming!","Gracias por avisarnos":"Thank you for letting us know",
 "Lamentamos que no puedas acompañarnos. Te vamos a extrañar.":"We are sorry you can't join us. We will miss you.",
 "Estás usando todos tus pases":"You are using all your passes","Plazo cerrado":"RSVP closed","Confirmaciones cerradas":"Responses closed",
@@ -1092,7 +1092,7 @@ document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click
 (function(){
   var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
   var RSVP_URL  = 'https://boda-rocio-y-quentin.vercel.app';
-  var DEADLINE  = new Date(2026, 10, 8, 23, 59, 59, 999); // 8 nov 2026
+  var DEADLINE  = new Date(2026, 10, 9, 23, 59, 59, 999); // 9 nov 2026
   var frozen    = Date.now() > DEADLINE.getTime();
   var ROJO      = '#B3261E';
 
